@@ -1,25 +1,31 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import Square from "./Square";
 
-/* function Board(props) {
+// añadir typescript tsx
+// GANADOR COMPONENT (piti si , tablero)
+// jugar de nuevo funcionalidad
+// Guardar partidas (guardar juegos)
+
+
+function Board(props) {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXisNext] = useState(true);
 
-  const setPlayer = () => {
-    setXisNext(!xIsNext);
-  };
 
   const handleClick = (i) => {
-    const squares = setSquares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+    const squaresAux = squares.slice();
+    if (calculateWinner(squaresAux) || squaresAux[i]) {
       return;
     }
-    squares[i] = setXisNext ? "X" : "O";
-        this.setState({ squares: squares, xIsNext: !xIsNext }); 
+    squaresAux[i] = xIsNext ? "X" : "O";
+    setSquares(squaresAux)
+    setXisNext(!xIsNext)
+
   };
 
   const renderSquare = (i) => {
-    return <Square value={setSquares[i]} onClick={() => handleClick(i)} />;
+    return <Square value={squares[i]} onClick={() => handleClick(i)} />;
   };
 
   const winner = calculateWinner(squares);
@@ -27,7 +33,7 @@ import Square from "./Square";
   if (winner) {
     status = "Winner: " + winner;
   } else {
-    status = "Next player: " + (setXisNext ? "X" : "O");
+    status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
   return (
@@ -50,69 +56,9 @@ import Square from "./Square";
       </div>
     </div>
   );
-} */
-
-class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true,
-    };
-  }
-
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? "X" : "O";
-    this.setState({ squares: squares, xIsNext: !this.state.xIsNext });
-  }
-
-  renderSquare(i) {
-    return (
-      <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
-      />
-    );
-  }
-
-  render() {
-    const winner = calculateWinner(this.state.squares);
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
-
-    return (
-      <div>
-        <div className='title-wrapper'>
-          <h1>Pitic-tac-toe</h1>
-        </div>
-        <div className='status'>{status}</div>
-        <div className='board-row'>
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className='board-row'>
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className='board-row'>
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
-  }
 }
+
+
 
 function calculateWinner(squares) {
   const lines = [

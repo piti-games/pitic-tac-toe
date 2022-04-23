@@ -22,6 +22,10 @@ function Square(props) {
     props.value === "X" ? hueso : props.value === "O" ? gominola : logo;
 
   return (
+    /* {
+       gameEnd && <Piti>
+       gameEnd ? <Piti props={props}/> : <Board></Board>
+      } */
     <button className='square' onClick={props.onClick}>
       <img
         src={iconName}
