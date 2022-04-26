@@ -1,7 +1,10 @@
-import React from "react";
-import hueso from "./assets/hueso.png";
-import gominola from "./assets/gominola.png";
-import logo from "./assets/logo.svg";
+
+import * as React from "react";
+import hueso from "../assets/hueso.png";
+import gominola from "../assets/gominola.png";
+import logo from "../assets/logo.svg";
+import { SquareProps } from "../types";
+
 
 //EJEMPLO DE CONPONENTE EN CLASE VS COMPONENTE EN FUNCION
 /* class Square extends React.Component {
@@ -15,17 +18,16 @@ import logo from "./assets/logo.svg";
   }
   */
 
-function Square(props) {
-  const emptyState = props.value === null;
+function Square(props: SquareProps) {
+  const emptyState:boolean = props.value !== "X" && props.value !== "O";
 
-  let iconName =
+  let iconName:string =
     props.value === "X" ? hueso : props.value === "O" ? gominola : logo;
 
+  
+
   return (
-    /* {
-       gameEnd && <Piti>
-       gameEnd ? <Piti props={props}/> : <Board></Board>
-      } */
+    
     <button className='square' onClick={props.onClick}>
       <img
         src={iconName}

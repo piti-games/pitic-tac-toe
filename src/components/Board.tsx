@@ -1,20 +1,15 @@
 
-import React, { useState } from "react";
+import  { useState } from "react";
+import * as React from "react";
 import Square from "./Square";
 
-// añadir typescript tsx
-// GANADOR COMPONENT (piti si , tablero)
-// jugar de nuevo funcionalidad
-// Guardar partidas (guardar juegos)
-
-
-function Board(props) {
+function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXisNext] = useState(true);
 
 
-  const handleClick = (i) => {
-    const squaresAux = squares.slice();
+  const handleClick = (i: number) => {
+    const squaresAux: string[] = squares.slice();
     if (calculateWinner(squaresAux) || squaresAux[i]) {
       return;
     }
@@ -24,12 +19,12 @@ function Board(props) {
 
   };
 
-  const renderSquare = (i) => {
+  const renderSquare = (i:number) => {
     return <Square value={squares[i]} onClick={() => handleClick(i)} />;
   };
 
-  const winner = calculateWinner(squares);
-  let status;
+  const winner: string | null = calculateWinner(squares);
+  let status: string;
   if (winner) {
     status = "Winner: " + winner;
   } else {
@@ -60,8 +55,8 @@ function Board(props) {
 
 
 
-function calculateWinner(squares) {
-  const lines = [
+function calculateWinner(squares: string[]) {
+  const lines: Array<number[]> = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],

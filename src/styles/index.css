@@ -35,6 +35,7 @@ ul {
   align-items: center;
   flex-wrap: wrap;
 }
+
 .square-image {
   width: var(--square-image-size);
   height: var(--square-image-size);
