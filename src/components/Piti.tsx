@@ -2,16 +2,26 @@ import * as React from "react";
 import piti from "../assets/piti.png";
 import { PitiProps } from "../types";
 
+/* {
+    style: xs,
+    props:{
+        winner,
+        gameEnd
+    }
+} */
 
-function Piti( props: PitiProps){
 
-    let winner = props.winner
+
+ function Piti( {winner, newGame}: PitiProps){ 
+
+  // function Piti(configProps){ //crear nueva interfaz
+
     return(
         <div className="piti-component">
             <div className="piti-component__data">
             <h1 className="piti-component__title">Felicidaces!</h1>
-            <p> The winner is :{winner}</p>ç
-            <button>Jugar de nuevo</button>
+            <p>The winner is : {winner}</p>
+            <button onClick={newGame}>Jugar de nuevo</button>
             </div>
             <div  className="piti-component__piti-wrapper">
                 <img

@@ -6,6 +6,6 @@ export type SquareProps = {
   }
   
 export type PitiProps ={
-  winner: string,
-  gameEnd: boolean,
+  winner: String,
+  newGame: MouseEventHandler,
 }
